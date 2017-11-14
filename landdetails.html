@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <meta name="keywords" content="土地详情" />
+    <title>土地详情</title>
+    <link href="css/landdetails.css" rel="stylesheet" type="text/css" />
+    <link href="css/map.css" rel="stylesheet" type="text/css" />
+    <link type="text/css" rel="stylesheet" rev="stylesheet" media="screen" href="http://api.tianditu.com/v4.0/css/tianditu4.0.css">
+
+</head>
+
+<body onload="loadlanddetailsmap();">
+    <!-- 地块名称、性质、状态 -->
+    <div class="land_head">
+        <span class="land_name">海洋城北侧1号地块</span><span class="land_property">住宅</span><span class="land_state">挂牌</span>
+    </div>
+    <!-- 地块编号、位置 -->
+    <div class="land_middle">
+        <ul>
+            <li class="land_middle_li">
+                <span class="land_id">地块编号：</span><span class="land_id_content"></span>
+            </li>
+            <li class="land_middle_li">
+                <span class="land_position">所在地区：</span><span class="land_position_content"></span>
+            </li>
+            <li class="land_middle_li">
+                <!--地图-->
+                <div class="landdetailsmap" id="landdetailsmap"></div>
+            </li>
+        </ul>
+    </div>
+    <!-- 土地基本信息 -->
+    <div class="land_basic">
+        <p class="land_basic_title">土地基本信息</p>
+        <ul class="land_info_ul">
+            <li class="land_info_li">
+                <span class="land_area">地区：</span><span class="land_area_content"></span>
+            </li>
+            <li class="land_info_li">
+                <span class="land_cityProper">城区：</span><span class="land_cityProper_content"></span>
+            </li>
+            <li class="land_info_li">
+                <span class="land_totalArea">总面积：</span><span class="land_totalArea_content">平方米</span>
+            </li>
+            <li class="land_info_li">
+                <span class="build_land_area">建筑用地面积：</span><span class="build_land_area_content">53296平方米</span>
+            </li>
+            <li class="land_info_li">
+                <span class="plan_build_area">规划建筑面积：</span><span class="plan_build_area_content">平方米</span>
+            </li>
+            <li class="land_info_li">
+                <span class="substitute_area">代征面积：</span><span class="substitute_area_content">暂无</span>
+            </li>
+            <li class="land_info_li">
+                <span class="volume_rate">容积率：</span><span class="volume_rate_content">≤2</span>
+            </li>
+            <li class="land_info_li">
+                <span class="green_rate">绿化率：</span><span class="green_rate_content">≥15</span>
+            </li>
+            <li class="land_info_li">
+                <span class="business_proportion">商业比例：</span><span class="business_proportion_content">暂无</span>
+            </li>
+            <li class="land_info_li">
+                <span class="build_density">建筑密度：</span><span class="build_density_content">≤55</span>
+            </li>
+            <li class="land_info_li">
+                <span class="height_limited">限制高度：</span><span class="height_limited_content">≤24</span>
+            </li>
+            <li class="land_info_li">
+                <span class="sell_form">出让形式：</span><span class="sell_form_content">挂牌</span>
+            </li>
+            <li class="land_info_li">
+                <span class="sell_years">出让年限：</span><span class="sell_years_content">50年</span>
+            </li>
+            <li class="land_info_li">
+                <span class="position">位置：</span><span class="position_content"></span>
+            </li>
+            <li class="land_info_li">
+                <span class="four">四至</span><span class="four_content"></span>
+            </li>
+            <li class="land_info_li">
+                <span class="plan_purpose">规划用途：</span><span class="plan_purpose_content"></span>
+            </li>
+        </ul>
+    </div>
+    <!-- 土地交易信息 -->
+    <div class="land_business">
+        <p class="land_business_title">土地交易信息</p>
+        <ul class="land_info_ul">
+            <li class="land_info_li">
+                <span class="transaction_status">交易状况：</span><span class="transaction_status_content"></span>
+            </li>
+            <li class="land_info_li">
+                <span class="competition_man">竞得方：</span><span class="competition_man_content"></span>
+            </li>
+            <li class="land_info_li">
+                <span class="start_date">起始日期：</span><span class="start_date_content"></span>
+            </li>
+            <li class="land_info_li">
+                <span class="close_date">截止日期：</span><span class="close_date_content"></span>
+            </li>
+            <li class="land_info_li">
+                <span class="deal_date">成交日期：</span><span class="deal_date_content"></span>
+            </li>
+            <li class="land_info_li">
+                <span class="trade_place">交易地点：</span><span class="trade_place_content"></span>
+            </li>
+            <li class="land_info_li">
+                <span class="start_price">起始价：</span><span class="start_price_content"></span>
+            </li>
+            <li class="land_info_li">
+                <span class="current_price">成交价：</span><span class="current_price_content"></span>
+            </li>
+            <li class="land_info_li">
+                <span class="floor_price">楼面地价：</span><span class="floor_price_content"></span>
+            </li>
+            <li class="land_info_li">
+                <span class="premium_rate">溢价率：</span><span class="premium_rate_content"></span>
+            </li>
+            <li class="land_info_li">
+                <span class="bond">保证金：</span><span class="bond_content"></span>
+            </li>
+            <li class="land_info_li">
+                <span class="minimum_fare_increase">最小加价幅度：</span><span class="minimum_fare_increase_content"></span>
+            </li>
+        </ul>
+    </div>
+    <br><br><br><br>
+    <!-- 必须 -->
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <!-- 专属 -->
+    <script type="text/javascript" src=" http://api.tianditu.com/api?v=4.0"></script>
+    <!-- mainjs -->
+    <script type="text/javascript" src="js/landdetails.js"></script>
+</body>
+</html>

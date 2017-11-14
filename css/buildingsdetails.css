@@ -1,0 +1,245 @@
+/*房屋详情页*/
+body{
+	width:90%;
+	margin: 0 auto;
+}
+/*房屋性质、状态*/
+.buildings_head{
+	padding-top: 22px;
+	position: relative;
+	margin-bottom: 34px;
+}
+.buildings_name{
+	font-size: 24px;
+	color: #169bd5;
+	font-weight: bold;
+	margin-right: 22px;
+	display: inline-block;
+}
+.buildings_property,.buildings_state{
+	width: 41px;
+	height: 19px;
+	background:#f2f2f2;
+	color: #ff0000;
+	text-align: center;
+	line-height: 19px;
+	display: inline-block;
+	position: absolute;
+    top: 26px;
+}
+.buildings_state{
+	margin-left: 51px;
+}
+/*房屋详细信息*/
+.buildings_details_info,.presale_info,.land_info,.buildings_picts,.price_trend,.buildings_map{
+	margin-top: 10px;
+	border: 1px solid #e4e4e4;
+	border-top: 2px solid #169bd5;
+	width: 100%;
+}
+.buildings_details_info{
+	height: 492px;
+}
+/*数据信息*/
+.basic_info{
+	width: 35%;
+	display: inline-block;
+	margin-top: 16px;
+	margin-left: 78px;
+}
+.basic_info_title{
+	font-size: 18px;
+	font-weight: bold;
+	margin-bottom: 30px;
+}
+.average_price_content{
+	color: #ff0000;
+}
+.basic_info_li{
+	font-size: 15px;
+	margin-top: 13px;
+}
+/*楼盘轮播图集*/
+.buildings_picts_carousel{
+	width: 50%;
+	display: inline-block;
+	float: left;
+}
+#wrapper{width: 601px;display: inline-block;float: right;margin-top: 9px;margin-right: 7px;}
+.imgnav{  position:relative; margin:0 auto; width:100%;}
+#img{ z-index:10; width:100%; position:relative; text-align:center;}
+#img img{ width: 575px;height:382px; display:none; border:4px solid #000;}
+#front{ position:absolute; left:0px; top:0px; z-index:10; cursor:pointer;  width:300px; height:390px; background:url(../images/ico/blank.gif); }
+#front a{  position:absolute; left:20px; top:143px;display:block; background:url(../images/ico/imgSlideLeft.png) no-repeat; width:104px; height:104px; display:none;}
+#next{  position:absolute; right:0px; top:0px; z-index:10;cursor:pointer; width:300px; height:390px;  background:url(../images/ico/blank.gif);}
+#next a{  position:absolute; right:20px; top:143px; display:block; background:url(../images/ico/imgSlideRight.png) no-repeat; width:104px; height:104px; display:none;}
+#cbtn ul{position: relative;margin-left: 9px;}
+#cbtn ul li{ float:left; padding:8px 3px 3px 3px; height:86px; cursor:pointer; text-align:center; margin-right:20px; position:relative;}
+#cbtn ul li:after{content: '效果图';height: 30px;width: 116px;background: #797774;z-index: 15;display: inline-block;line-height: 30px;color:#fff;position: absolute;bottom: 2px;left: 3px;opacity: 0.8;}
+#cbtn ul li:nth-child(2):after{content: '交通图';}
+#cbtn ul li:nth-child(3):after{content: '户型图';}
+#cbtn ul li:nth-child(4):after{content: '实景图';}
+#cbtn ul li img{ width:116px; height:86px; display:block;}
+#cbtn li.hov{ background:url(../images/ico/imgHoverBg.png) no-repeat;}
+.picSildeLeft{cursor:pointer; position:absolute; top:32px; left:3px; z-index:9;}
+.picSildeRight{cursor:pointer; position:absolute; top:32px; right:3px; z-index:9;}
+/*预售信息*/
+.presale_info{
+	height: 167px;
+}
+.two_title{
+	width: 72px;
+	font-size: 17px;
+	padding:0 10px 15px 10px;
+	font-weight: bold;
+	color: #ff0000;
+	border-bottom: 2px solid #ff0000;
+	margin: 14px 0 17px 31px;
+}
+/*表格*/
+table.table{
+	border-right: 1px solid #e4e4e4;
+    border-bottom: 1px solid #e4e4e4;
+    margin-left: 36px;
+}
+table.table td, table.table th {
+    border-left: 1px solid #e4e4e4;
+    border-top: 1px solid #e4e4e4;
+    width: 159px;
+    height: 29px;
+}
+/*土地信息*/
+.land_info{
+	height: 177px;
+}
+.land_infoUi{
+	margin-top: 15px;
+	margin-left: 50px;
+}
+.land_infoLi{
+	margin-top: 14px;
+	float: left;
+	width: 45%;
+}
+/*楼盘相册*/
+.buildings_picts{
+	height: 377px;
+	position: relative;
+}
+.picture{
+	width: 282px;
+	height: 282px;
+	border:1px solid #d7d7d7;
+	margin-left: 7px;
+	padding:4px 3px 0 3px;
+	float: left;
+}
+.pict_img{
+	width: 282px;
+	height: 187px;
+}
+.pict_text{
+	margin-top: 21px;
+	margin-left: 14px;
+}
+.pict_text>b{
+	font-size: 16px;
+	display: block;
+	margin-bottom: 26px;
+}
+/*展开部分*/
+.pictsHide{
+	width: 90%;
+    height: 100%;
+    background: #797774;
+    position: fixed;
+    top: 0;
+    opacity: 0.95;
+    z-index: 1200;
+}
+#picts_hide{ width:788px;  margin:0 auto;margin-top: 40px;}
+#pictsSlideWrap{ background:#F5F8FD; border:1px solid #A9BFD6; padding-bottom:30px;position: relative;}
+i.delete_i{
+	background: url(../images/close.png) no-repeat;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: inline-block;
+    z-index: 100;
+    cursor: pointer;
+}
+.imgBig{  position:relative; margin:0 auto; width:788px;}
+#imgAll{ z-index:10; width:788px; position:relative; text-align:center;}
+#imgAll img{ height:333px; width:572px;display:none; border:4px solid #000;}
+#prevOne{ position:absolute; left:0px; top:0px; z-index:10; cursor:pointer;  width:394px; height:341px; background:url(../images/ico/blank.gif); }
+#prevOne a{  position:absolute; left:13px; top:146px;display:block; background:url(../images/leftp.png) no-repeat; width:24px; height:48px;background-size: 24px 48px;}
+#nextOne{  position:absolute; right:0px; top:0px; z-index:10;cursor:pointer; width:394px; height:341px;  background:url(../images/ico/blank.gif);}
+#nextOne a{  position:absolute; right:13px; top:146px; display:block; background:url(../images/rightp.png) no-repeat; width:24px; height:48px;background-size: 24px 48px;}
+#thumbnail{position:relative; height:122px; margin-top:12px; }
+#thumbnail ul{position:relative; width:10000px; height:122px;}
+#thumbnail ul li{ float:left; padding:8px 3px 3px 3px; width:116px; height:86px; cursor:pointer; text-align:center; margin-right:20px; position:relative;}
+#thumbnail ul li img{ width:116px; height:86px; display:block;}
+#thumbnail li.hov{ background:url(../images/ico/imgHoverBgBlue.png) no-repeat;}
+#thumbnailAll{width:690px; height:116px;overflow:hidden; position:relative; top:10px; margin:0 auto;}
+.pictsSildeLeft{cursor:pointer; position:absolute; top:32px; left:10px; z-index:9;}
+.pictsSildeRight{cursor:pointer; position:absolute; top:32px; right:10px; z-index:9;}
+.overhide{overflow:hidden;text-indent:-100em;}
+.clearfix:after {clear: both;content: '';display: block;font-size: 0;line-height: 0;visibility: hidden;width: 0;height: 0;}
+.clearfix {display: +inline-block;}
+/*文字标志*/
+.text_icon{
+	margin-top: 15px;
+	margin-left: 14px;
+	margin-bottom: 8px;
+	font-weight: 600;
+}
+#text_icon>tt{
+	display: inline-block;
+	margin-right: 33px;
+}
+.page_current{
+	font-size: 14px;
+	color: #fe5e0b;
+}
+.build_name{
+	display: inline-block;
+	margin-right: 5px;
+}
+.apartment_layout{
+	display: inline-block;
+	margin-right: 5px;
+}
+.sell_status{
+	width: 40px;
+	height: 20px;
+	color: #fff;
+	background: #22c61d;
+	text-align: center;
+	line-height: 20px;
+	font-weight: 600;
+	display: inline-block;
+	position: absolute;
+	left: 10px;
+    top: 10px;
+}
+/*价格走势*/
+.price_trend{
+	/*height: 359px;*/
+}
+.chart{
+	width: 85%;
+	margin: 0 auto;
+	height: 370px;
+}
+/*地图信息*/
+.buildings_map{
+	height: 472px
+}
+.buildingsdetailsmap{
+	width: 85%;
+	margin: 0 auto;
+	height: 394px;
+	border:1px solid #797979;
+}

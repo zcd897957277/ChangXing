@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <meta name="keywords" content="长兴智慧城市" />
+    <title>长兴智慧城市</title>
+    <link href="css/map.css" rel="stylesheet" type="text/css" />
+    <link href="css/trans.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="css/jspanel.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jspanel3/3.10.0/jquery.jspanel.min.css"/>
+    <link type="text/css" rel="stylesheet" rev="stylesheet" media="screen" href="http://api.tianditu.com/v4.0/css/tianditu4.0.css">
+    <script type="text/javascript" src="js/heatmapData.js"></script>
+
+</head>
+
+<body onload="loadmap();">
+    <div class="allleft" id="search">
+        <!-- 搜索框 -->
+        <div class="searchbox">
+            <!-- 房屋、人口、土地切换栏 -->
+            <div class="switchBar" id="switchBar">
+                <!-- logo -->
+                <div class="logo">
+                    <span>智慧长兴</span>
+                </div>
+                <!-- 切换 -->
+                <div class="switchs">
+                    <div class="switch_selected"><span class="show_item">人口</span><span class="dropUpBox"></span></div>
+                    <ul class="switch_items" style="display: none;">
+                        <li class="switch_item switch_item_selected"><a href="./buildings.html" style="color:#199ed8;">房屋</a></li>
+                        <li class="switch_item"><a href="./land.html" style="color:#000000;">土地</a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- 搜索区域 -->
+            <div class="searchbox_area">
+                <div class="search_left">
+                    <input type="text" class="search_txtleft" id="keyword" value="" />
+                </div>
+                <div class="search_rt" id="partQuery">
+                    <input type="button" class="search_input"/>
+                </div>
+            </div>
+        </div>
+        <!-- 展开项 -->
+        <div class="searchbox_nav"><span class="searchbox_nav_show"></span></div>
+        <!-- 条件项 -->
+        <div class="condition_item" style="display: none">
+            <!-- 搜索条件 -->
+            <div class="searchbox_condition">
+                <ul>
+                    <!-- 性别 -->
+                    <li class="condition">
+                        <div class="condition_title"><span class="population_condition_icon"></span>性别</div>
+                        <ul class="alllines">
+                            <li data="男" class="small_line population_li line_selected">男</li>
+                            <li data="女" class="small_line population_li">女</li>
+                            <li class="clear"></li>
+                        </ul>
+                    </li>
+                    <!-- 年龄 -->
+                    <li class="condition">
+                        <div class="condition_title"><span class="population_condition_icon"></span>年龄</div>
+                        <div class="input_user_defined">
+                            <input class="set_input" data="年龄1" type="text" maxlength="20">                                                                                                                                                                                                                       -<input class="set_input" data="年龄2" type="text" maxlength="20">岁
+                        </div>
+                    </li>
+                    <!-- 户籍 -->
+                    <li class="condition">
+                        <div class="condition_title"><span class="population_condition_icon"></span>户籍</div>
+                        <ul class="alllines">
+                            <li data="省内" class="small_line population_li line_selected">省内</li>
+                            <li data="省外" class="small_line population_li">省外</li>
+                            <li data="长兴县市" class="small_line population_li">长兴县市</li>
+                            <li class="clear"></li>
+                        </ul>
+                    </li>
+                    <!-- 婚姻状况 -->
+                    <li class="condition">
+                        <div class="condition_title"><span class="population_condition_icon"></span>婚姻状况</div>
+                        <ul class="alllines">
+                            <li data="已婚" class="normal_line population_li line_selected">已婚</li>
+                            <li data="未婚" class="normal_line population_li">未婚</li>
+                            <li data="离异" class="normal_line population_li">离异</li>
+                            <li class="clear"></li>
+                        </ul>
+                    </li>
+                    <!-- 居住地 -->
+                    <li class="condition">
+                        <div class="condition_title"><span class="population_condition_icon"></span>居住地</div>
+                        <ul class="alllines">
+                            <li data="雉城街道" class="small_line population_li line_selected">雉城街道</li>
+                            <li data="太湖街道" class="small_line population_li">太湖街道</li>
+                            <li data="泗安镇" class="small_line population_li">泗安镇</li>
+                            <li data="画溪街道" class="small_line population_li">画溪街道</li>
+                            <li data="和平镇" class="small_line population_li">和平镇</li>
+                            <li data="煤山镇" class="small_line population_li">煤山镇</li>
+                            <li data="林城镇" class="small_line population_li">林城镇</li>
+                            <li data="洪桥镇" class="small_line population_li">洪桥镇</li>
+                            <li data="夹浦镇" class="small_line population_li">夹浦镇</li>
+                            <li data="李家巷镇" class="small_line population_li">李家巷镇</li>
+                            <li data="虹星桥镇" class="small_line population_li">虹星桥镇</li>
+                            <li data="小浦镇" class="small_line population_li">小浦镇</li>
+                            <li data="水口乡" class="small_line population_li">水口乡</li>
+                            <li data="吕山乡" class="small_line population_li">吕山乡</li>
+                            <li data="白岘乡" class="small_line population_li">白岘乡</li>
+                            <li class="clear"></li>
+                        </ul>
+                    </li>
+                    <!-- 工作地 -->
+                    <li class="condition">
+                        <div class="condition_title"><span class="population_condition_icon"></span>工作地</div>
+                        <ul class="alllines">
+                            <li data="雉城街道" class="small_line population_li line_selected">雉城街道</li>
+                            <li data="太湖街道" class="small_line population_li">太湖街道</li>
+                            <li data="泗安镇" class="small_line population_li">泗安镇</li>
+                            <li data="画溪街道" class="small_line population_li">画溪街道</li>
+                            <li data="和平镇" class="small_line population_li">和平镇</li>
+                            <li data="煤山镇" class="small_line population_li">煤山镇</li>
+                            <li data="林城镇" class="small_line population_li">林城镇</li>
+                            <li data="洪桥镇" class="small_line population_li">洪桥镇</li>
+                            <li data="夹浦镇" class="small_line population_li">夹浦镇</li>
+                            <li data="李家巷镇" class="small_line population_li">李家巷镇</li>
+                            <li data="虹星桥镇" class="small_line population_li">虹星桥镇</li>
+                            <li data="小浦镇" class="small_line population_li">小浦镇</li>
+                            <li data="水口乡" class="small_line population_li">水口乡</li>
+                            <li data="吕山乡" class="small_line population_li">吕山乡</li>
+                            <li data="白岘乡" class="small_line population_li">白岘乡</li>
+                            <li class="clear"></li>
+                        </ul>
+                    </li>
+                    <!-- 购房状况 -->
+                    <li class="condition">
+                        <div class="condition_title"><span class="population_condition_icon"></span>购房状况</div>
+                        <ul class="alllines">
+                            <li data="无房" class="small_line population_li line_selected">无房</li>
+                            <li data="首套房" class="small_line population_li">首套房</li>
+                            <li data="二套房" class="small_line population_li">二套房</li>
+                            <li data="三套房" class="small_line population_li">三套房</li>
+                            <li data="多套房" class="small_line population_li">多套房</li>
+                            <li class="clear"></li>
+                        </ul>
+                    </li>
+                    <!-- 车辆状况 -->
+                    <li class="condition">
+                        <div class="condition_title"><span class="population_condition_icon"></span>车辆状况</div>
+                        <ul class="alllines">
+                            <li data="有车" class="small_line population_li line_selected">有车</li>
+                            <li data="无车" class="small_line population_li">无车</li>
+                            <li class="clear"></li>
+                        </ul>
+                    </li>
+                    <!-- 社保情况 -->
+                    <li class="condition condition_last_padding">
+                        <div class="condition_title"><span class="population_condition_icon"></span>社保情况</div>
+                        <ul class="alllines">
+                            <li data="五险一金" class="sbig_line population_li line_selected">五险一金</li>
+                            <li data="五险" class="sbig_line population_li">五险</li>
+                            <li data="无" class="sbig_line population_li">无</li>
+                            <li class="clear"></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- 按钮组 -->
+            <div class="btns">
+                <div class="clear_btn">清空</div><div class="sure_btn population_sure_btn">确定</div><div class="statistical_btn">统计分析</div>
+            </div>
+        </div>
+        <!-- 统计 -->
+        <div class="statistics" style="display: none" id="statistics">
+            <!-- 删除 -->
+            <i class="delete_icon"></i>
+            <!-- 统计项 -->
+            <ul class="statistics_items">
+                <!-- 性别 -->
+                <li class="stat_item">
+                    <div class="stat_title"><span class="stat_icon"></span>性别</div>
+                    <ul class="alllines">
+                        <li data="男" class="small_line population_li line_selected">男</li>
+                        <li data="女" class="small_line population_li">女</li>
+                        <li class="clear"></li>
+                    </ul>
+                </li>
+                <!-- 年龄 -->
+                <li class="stat_item">
+                    <div class="stat_title"><span class="stat_icon"></span>年龄</div>
+                    <div class="input_user_defined">
+                        <input class="set_input" data="年龄1" type="text" maxlength="20">                                                                                                                                                                                                                       -<input class="set_input" data="年龄2" type="text" maxlength="20">岁
+                    </div>
+                </li>
+                <!-- 户籍 -->
+                <li class="stat_item">
+                    <div class="stat_title"><span class="stat_icon"></span>户籍</div>
+                    <ul class="alllines">
+                        <li data="省内" class="small_line population_li line_selected">省内</li>
+                        <li data="省外" class="small_line population_li">省外</li>
+                        <li data="长兴县市" class="small_line population_li">长兴县市</li>
+                        <li class="clear"></li>
+                    </ul>
+                </li>
+                <!-- 市内交通动线 -->
+                <li class="stat_item">
+                    <div class="stat_title"><span class="stat_icon"></span>市内交通动线</div>
+                    <div class="input_user_defined">
+                        <input class="set_input long_input" data="市内交通动线" type="text" maxlength="20">
+                    </div>
+                </li>
+                <!-- 市外交通动线 -->
+                <li class="stat_item">
+                    <div class="stat_title"><span class="stat_icon"></span>市外交通动线</div>
+                    <div class="input_user_defined">
+                        <input class="set_input long_input" data="市外交通动线" type="text" maxlength="20">
+                    </div>
+                </li>
+                <!-- 时间周期 -->
+                <li class="stat_item">
+                    <div class="stat_title"><span class="stat_icon"></span>时间周期</div>
+                    <div class="time_plug">
+                        <input type="text" class="ldate" data="日期1" placeholder="时间插件" id="data1"> - <input type="text" class="ldate" data="日期2" placeholder="时间插件" id="data2">
+                    </div>
+                </li>
+            </ul>
+            <!-- 提交按钮 -->
+            <div class="submit_btn">提交</div>
+        </div>
+        <!-- 压力预警 -->
+        <div class="pressure" style="display: none" id="pressure">
+            <!-- 删除 -->
+            <i class="delete_icon"></i>
+            <!-- 参数设置 -->
+            <ul class="pressure_items">
+                <!-- 教育压力参数设置 -->
+                <li class="pressure_item_one">
+                    <div class="pressure_title"><span class="pressure_icon"></span>教育压力参数设置</div>
+                    <div class="input_user_defined input_yl">
+                        <span>学龄年龄段人口：学校规模比=</span><input class="set_input input_pressure_long" data="教育压力比" type="text" maxlength="20">
+                    </div>
+                </li>
+                <!-- 医疗压力参数设置 -->
+                <li class="pressure_item_two">
+                    <div class="pressure_title"><span class="pressure_icon"></span>医疗压力参数设置</div>
+                    <div class="input_user_defined input_yl">
+                        <span>人口：综合医院规模比=</span><input class="set_input input_pressure_long" data="医疗压力比" type="text" maxlength="20">
+                    </div>
+                    <div class="input_user_defined input_yl input_user_defined_padTop_one">
+                        <span class="lettspac">青壮年</span><input class="set_input input_pressure_short" data="青壮年医疗压力比数1" type="text" maxlength="20">                                                                                                                                                                                                                       ：<input class="set_input input_pressure_short" data="青壮年医疗压力比数2" type="text" maxlength="20">
+                    </div>
+                    <div class="input_user_defined input_yl input_user_defined_padTop_two">
+                        <span class="pressure_input_text">老年</span><input class="set_input input_pressure_short" data="老年医疗压力比数1" type="text" maxlength="20">                                                                                                                                                                                                                       ：<input class="set_input input_pressure_short" data="老年医疗压力比数2" type="text" maxlength="20">
+                    </div>
+                    <div class="input_user_defined input_yl input_user_defined_padTop_two">
+                        <span class="pressure_input_text">妇女</span><input class="set_input input_pressure_short" data="妇女医疗压力比数1" type="text" maxlength="20">                                                                                                                                                                                                                       ：<input class="set_input input_yl input_pressure_short" data="妇女医疗压力比数2" type="text" maxlength="20">
+                    </div>
+                </li>
+                <!-- 商业压力参数设置 -->
+                <li class="pressure_item_three">
+                    <div class="pressure_title"><span class="pressure_icon"></span>商业压力参数设置</div>
+                    <div class="input_user_defined input_yl">
+                        <span>人口：商业规模比=</span><input class="set_input input_pressure_long" data="商业压力比" type="text" maxlength="20">
+                    </div>
+                </li>
+                <!-- 广场公园压力参数设置 -->
+                <li class="pressure_item_two">
+                    <div class="pressure_title"><span class="pressure_icon"></span>广场公园压力参数设置</div>
+                    <div class="input_user_defined input_yl">
+                        <span>人口：广场公园规模比=</span><input class="set_input input_pressure_long" data="广场公园压力比" type="text" maxlength="20">
+                    </div>
+                </li>
+            </ul>
+            <!-- 提交按钮 -->
+            <div class="pressure_submit_btn">提交</div>
+        </div>
+    </div>
+    <div class="allright" id="content">
+        <!-- 压力预警 -->
+        <div id="pressure_warning">
+            <span>压力预警</span>
+        </div>
+        <!-- 右边工具栏 -->
+        <div class="allrttop" id="tool_container">
+            <!--右面工具栏-->
+            <div class="alright_top_rt">
+                <ul>
+                    <li class="tool" id="tLi"><a href="javascript:void(0)" class="toolbg" id="toolType"><span class="toollabel"></span>工具</a><span class="rang_more" id="toolCur"></span>
+                        <ul style="display: none;" id="toolDiv">
+                            <li id="bMeasure" onclick="toolbarmeasure()"><a href="javascript:void(0)"><span class="toolcllabel"></span>测量</a></li>
+                            <li id="bMeasureMask" onclick="toolbarmeasuremask()"><a href="javascript:void(0)"><span class="toolcmlabel"></span>测面</a></li>
+                            <li id="bMarkSpot" onclick="toolbarmarkspot()"><a href="javascript:void(0)"><span class="toolbdlabel"></span>标点</a></li>
+                            <li id="bMarkLine" onclick="toolbarmarkline()"><a href="javascript:void(0)"><span class="toolbxlabel"></span>标线</a></li>
+                            <li id="bMarkMask" onclick="toolbarmarkmask()"><a href="javascript:void(0)"><span class="toolbmlabel"></span>标面</a></li>
+                        </ul></li>
+                    <li class="publine"></li>
+                    <li class="delete" id="bClear"><a href="javascript:void(0);" class="deletebg"><span
+                        class='dellabel'></span>清空</a></li>
+                    <li class="publine"></li>
+                    <li class="screen" id="fullScreen"><a href="javascript:void(0);" class="screenbg"><span
+                        class='scrlabel'></span>全屏</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- 地图图层切换 -->
+        <div class="layer_nav">
+            <div class="switch_btn">
+                <i></i>
+            </div>
+            <div class="layer-pop" style="display: none">
+                <div class="layer_container">
+                    <div class="layer-items clearfix">
+                        <!---->
+                        <a href="javascript:void(0);" id="vec_type" class="vec_type layer-item">
+                            <div class="layer_bg"></div> <span class="layer-tip">地图</span></a>
+                        <a href="javascript:void(0);" id="img_type" class="img_type layer-item">
+                            <div class="layer_bg"></div> <span class="layer-tip">影像</span></a>
+                        <a href="javascript:void(0);" id="ter_type" class="ter_type layer-item">
+                            <div class="layer_bg"></div> <span class="layer-tip">地形</span></a>
+                        <a href="javascript:void(0);" id="sw_type" class="sw_type layer-item">
+                            <div class="layer_bg"></div> <span class="layer-tip">三维</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--地图-->
+        <div class="map" id="map"></div>
+    </div>
+    <!-- 必须 -->
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/jquery.jspanel.min.js"></script>
+    <script type="text/javascript" src="js/jquery.jspanel-compiled.js"></script>
+    <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspanel3/3.10.0/jquery.jspanel-compiled.min.js"></script> -->
+    <script type="text/javascript" src="js/echarts.min.js"></script>
+    <!-- 时间插件 -->
+    <script type="text/javascript" src="laydate/laydate.js"></script>
+    <!-- 3D图插件 -->
+    <script type="text/javascript" src="js/echarts-gl.min.js"></script> 
+    <!-- 专属 -->
+    <script type="text/javascript" src=" http://api.tianditu.com/api?v=4.0"></script>
+    <script type="text/javascript" src="http://lbs.tianditu.com/api/js4.0/opensource/openlibrary/HeatmapOverlay.js"></script>
+    <!-- 3d饼图 -->
+    <script src="https://img.hcharts.cn/highcharts/highcharts.js"></script>
+    <script src="https://img.hcharts.cn/highcharts/highcharts-3d.js"></script>
+    <script src="https://img.hcharts.cn/highcharts/modules/exporting.js"></script>
+    <script src="https://img.hcharts.cn/highcharts-plugins/highcharts-zh_CN.js"></script>
+    <!-- 中国地图插件 -->
+    <script type="text/javascript" src="js/china.js"></script>
+    <!-- 工具栏下面的图层 -->
+    <script type="text/javascript" src="js/layers.js"></script>
+    <!-- 搜索框的js -->
+    <script type="text/javascript" src="js/search.js"></script>
+    <!-- 自定义管理 -->
+    <script type="text/javascript" src="js/userDefined.js"></script>
+    <!-- 图表 -->
+    <script type="text/javascript" src="js/floatpanel.js"></script>
+    <!-- 地图工具项 -->
+    <script type="text/javascript" src="js/clipboard.min.js"></script>
+    <script type="text/javascript" src="js/maptoolbar.js"></script>
+    <!-- mainjs -->
+    <script type="text/javascript" src="js/changxingmap.js"></script>
+</body>
+</html>

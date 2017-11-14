@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <meta name="keywords" content="房屋详情" />
+    <title>房屋详情</title>
+    <link href="css/map.css" rel="stylesheet" type="text/css" />
+    <link href="css/buildingsdetails.css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" rev="stylesheet" media="screen" href="http://api.tianditu.com/v4.0/css/tianditu4.0.css">
+
+</head>
+
+<body onload="loadbuildingsdetailsmap();">
+    <!-- 房屋名称、性质、状态 -->
+    <div class="buildings_head">
+        <span class="buildings_name">绿城长兴广场</span><span class="buildings_property">住宅</span><span class="buildings_state">现房</span>
+    </div> 
+    <!-- 房屋详细信息 -->
+    <div class="buildings_details_info">
+        <!-- 数据信息 -->
+        <div class="basic_info">
+            <p class="basic_info_title"><span class="average_price">成交均价：</span><span class="average_price_content">1000元/平米</span></p>
+            <ul>
+                <li class="basic_info_li">
+                    <span class="buildings_address">楼盘地址：</span><span class="buildings_address_content"></span>
+                </li>
+                <li class="basic_info_li">
+                    <span class="sales_address">售楼地址：</span><span class="sales_address_content"></span>
+                </li>
+                <li class="basic_info_li">
+                    <span class="downtown_area">所在城区：</span><span class="downtown_area_content"></span>
+                </li>
+                <li class="basic_info_li">
+                    <span class="main_house_type">主力户型：</span><span class="main_house_type_content"></span>
+                </li>
+                <li class="basic_info_li">
+                    <span class="salable_copy_number">可售套数：</span><span class="salable_copy_number_content"></span>
+                </li>
+                <li class="basic_info_li">
+                    <span class="saleable_area">可售面积：</span><span class="saleable_area_content"></span>
+                </li>
+                <li class="basic_info_li">
+                    <span class="house_use">房屋用途：</span><span class="house_use_content"></span>
+                </li>
+                <li class="basic_info_li">
+                    <span class="decoration_condition">装修状况：</span><span class="decoration_condition_content"></span>
+                </li>
+                <li class="basic_info_li">
+                    <span class="architectural_form">建筑形式：</span><span class="architectural_form_content"></span>
+                </li>
+                <li class="basic_info_li">
+                    <span class="open_time">开盘时间：</span><span class="open_time_content"></span>
+                </li>
+                <li class="basic_info_li">
+                    <span class="developer">开发商：</span><span class="developer_content"></span>
+                </li>
+                <li class="basic_info_li">
+                    <span class="house_state">楼盘状态：</span><span class="house_state_content"></span>
+                </li>
+                <li class="basic_info_li">
+                    <span class="house_intro">楼盘简介：</span><span class="house_intro_content"></span>
+                </li>
+            </ul>
+        </div>
+        <!-- 楼盘轮播图集 -->
+        <div id="wrapper">
+            <div id="picSlideWrap" class="clearfix">    
+                <div class="imgnav" id="imgnav"> 
+                     <div id="img"> 
+                        <img src="images/100260_1306276811398.jpg"/>
+                        <img src="images/100261_1306276853791.jpg"/>
+                        <img src="images/100391_4381_1306217104406.jpg" />
+                        <img src="images/bImg.jpg"/>
+                        <div id="front" title="上一张"><a href="javaScript:void(0)" class="pngFix"></a></div>
+                        <div id="next" title="下一张"><a href="javaScript:void(0)" class="pngFix"></a></div>
+                    </div>
+                      
+                    <div id="cbtn">
+                        <div id="cSlideUl">
+                            <ul>
+                                <li><img src="images/100260_1306276811398.jpg"/></li>
+                                <li><img src="images/100261_1306276853791.jpg"/></li>
+                                <li><img src="images/100391_4381_1306217104406.jpg" /></li>
+                                <li><img src="images/bImg.jpg"/></li>
+                            </ul>
+                        </div>
+                     </div>            
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 预售信息 -->
+    <div class="presale_info">
+        <p class="two_title">预售信息</p>
+        <!-- 表格 -->
+        <table class="table" border="0" cellspacing="0" cellpadding="0">
+            <thead>
+                <th>预售证号</th>
+                <th>房屋用途</th>
+                <th>核发日期</th>
+                <th>总套数</th>
+                <th>可售套数</th>
+                <th>总面积</th>
+                <th>可售面积</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- 土地信息 -->
+    <div class="land_info">
+        <p class="two_title">土地信息</p>
+        <ul class="land_infoUi">
+            <li class="land_infoLi">
+                <span class="land_num">土地编号：</span><span class="land_num_content"></span>
+            </li>
+            <li class="land_infoLi">
+                <span class="land_name">土地名称：</span><span class="land_name_content"></span>
+            </li>
+            <li class="land_infoLi">
+                <span class="covered_area">占地面积：</span><span class="covered_area_content">平方米</span>
+            </li>
+            <li class="land_infoLi">
+                <span class="built_up_area">建筑面积：</span><span class="built_up_area_content">53296平方米</span>
+            </li>
+            <li class="land_infoLi">
+                <span class="property_right">产权：</span><span class="property_right">年</span>
+            </li>
+            <li class="land_infoLi">
+                <span class="households">户数：</span><span class="households_content"></span>
+            </li>
+        </ul>
+    </div>
+    <!-- 楼盘相册 -->
+    <div class="buildings_picts" id="buildings_picts">
+        <!-- 显示部分 -->
+        <div class="picts_show">
+            <p class="two_title">楼盘相册</p>
+            <ul>
+                <!-- 相册1 -->
+                <li class="picture">
+                    <img class="pict_img" src="./images/房屋.jpg" alt="">
+                    <div class="pict_text">
+                        <b>绿城长兴广场效果图</b>
+                        <span>20171031上传</span>
+                    </div>
+                </li>
+                <!-- 相册2 -->
+                <li class="picture">
+                    <img class="pict_img" src="./images/房屋.jpg" alt="">
+                    <div class="pict_text">
+                        <b>绿城长兴广场交通图</b>
+                        <span>20171031上传</span>
+                    </div>
+                </li>
+                <!-- 相册3 -->
+                <li class="picture">
+                    <img class="pict_img" src="./images/房屋.jpg" alt="">
+                    <div class="pict_text">
+                        <b>绿城长兴广场户型图</b>
+                        <span>20171031上传</span>
+                    </div>
+                </li>
+                <!-- 相册4 -->
+                <li class="picture">
+                    <img class="pict_img" src="./images/房屋.jpg" alt="">
+                    <div class="pict_text">
+                        <b>绿城长兴广场实景图</b>
+                        <span>20171031上传</span>
+                    </div>
+                </li>
+                <li class="clear"></li>
+            </ul>
+        </div>
+        <!-- 展开部分 -->
+        <div class="pictsHide" style="display: none;">
+            <div id="picts_hide">
+                <div id="pictsSlideWrap" class="clearfix"> 
+                    <i class="delete_i"></i>
+                    <!--文字标志-->
+                    <div class="text_icon" id="text_icon">
+                        <tt></tt><span class="build_name">绿城长兴广场B3#</span>户型:<span class="apartment_layout">C</span>面积:<span class="acreage">0.00平米</span>
+                    </div>
+                    <div class="imgBig" id="imgBig"> 
+                         <div id="imgAll"> 
+                            <img src="images/100260_1306276811398.jpg"/>
+                            <img src="images/100261_1306276853791.jpg"/>
+                            <img src="images/100391_4381_1306217104406.jpg"/>
+                            <img src="images/bImg.jpg"/>
+                            <img src="images/100260_1306276811398.jpg"/>
+                            <img src="images/100261_1306276853791.jpg"/>
+                            <img src="images/100391_4381_1306217104406.jpg"/>
+                            <img src="images/bImg.jpg"/>
+                            <img src="images/100260_1306276811398.jpg"/>
+                            <img src="images/100261_1306276853791.jpg"/>
+                            <div id="prevOne" title="上一张"><a href="javaScript:void(0)" class="pngFix"></a></div>
+                            <div id="nextOne" title="下一张"><a href="javaScript:void(0)" class="pngFix"></a></div>
+                            <div class="sell_status"></div>
+                         </div>   
+                         <div id="thumbnail">
+                            <i class="pictsSildeLeft"><img src="images/ico/picSlideLeft.gif"/></i> 
+                            <i class="pictsSildeRight"><img src="images/ico/picSlideRight.gif"/></i> 
+                            <div id="thumbnailAll">
+                                <ul>
+                                    <li><img src="images/100260_1306276811398.jpg"/></li>
+                                    <li><img src="images/100261_1306276853791.jpg"/></li>
+                                    <li><img src="images/100391_4381_1306217104406.jpg" /></li>
+                                    <li><img src="images/bImg.jpg"/></li>
+                                    <li><img src="images/100260_1306276811398.jpg"/></li>
+                                    <li><img src="images/100261_1306276853791.jpg"/></li>
+                                    <li><img src="images/100391_4381_1306217104406.jpg" /></li>
+                                    <li><img src="images/bImg.jpg"/></li>
+                                    <li><img src="images/100260_1306276811398.jpg"/></li>
+                                    <li><img src="images/100261_1306276853791.jpg"/></li>
+                                </ul>
+                            </div>
+                         </div>         
+                    </div>
+               </div>
+            </div>
+        </div>
+    </div>
+    <!-- 价格走势 -->
+    <div class="price_trend">
+        <p class="two_title">价格走势</p>
+        <!-- 折线图 -->
+        <div id="chart" class="chart"></div>
+    </div>
+    <!-- 地图信息 -->
+    <div class="buildings_map">
+        <p class="two_title">地图信息</p>
+        <!--地图-->
+        <div class="buildingsdetailsmap" id="buildingsdetailsmap"></div>
+    </div>
+    <br><br><br><br>
+    <!-- 必须 -->
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/echarts.min.js"></script>
+    <!-- 专属 -->
+    <script type="text/javascript" src=" http://api.tianditu.com/api?v=4.0"></script>
+    <!-- mainjs -->
+    <script type="text/javascript" src="js/buildingsdetails.js"></script>
+</body>
+</html>
