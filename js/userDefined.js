@@ -185,7 +185,10 @@ var userDefined={
         }.bind(this));
     },
     customManage:function(){//自定义面积段管理 自定义单价段管理 自定义总价段管理 自定义楼层管理
-        var customManagements=this.customManagements;
+        if (this.aDomAry.length < 4) {
+            this.aDomAry = fGetElement("search","statistics","allCustomManagement");
+        }
+        var customManagements=$(this.aDomAry[2]).children('div');
         for(var k=0;k<customManagements.length;k++){
             !(function(k){
                 var area=$($(customManagements)[k]).children('div:eq(0)');
@@ -202,20 +205,14 @@ var userDefined={
                     $(addArea).attr('style','');
                 });
                 // 设置
-                for(var i=0;i<(spans).length;i++){
-                    !(function(i){
-                        $($(spans)[i]).on('click',function(){
-                            for(var j=0;j<spans.length;j++){
-                                if($($(spans)[j]).hasClass('tbody_td_span_selected')){
-                                    $($(spans)[j]).removeClass('tbody_td_span_selected').addClass('tbody_td_span_not_selected');
-                                }
-                            }
-                            if(!$(this).hasClass('tbody_td_span_selected')){
-                                $(this).addClass('tbody_td_span_selected').removeClass('tbody_td_span_not_selected');
-                            }
-                        });
-                    }(i))
-                }
+                $(tbody).on('click','span',function(){
+                    if($(tbody).find('span').hasClass('tbody_td_span_selected')){
+                        $(tbody).find('span').removeClass('tbody_td_span_selected').addClass('tbody_td_span_not_selected');
+                    }
+                    if(!$(this).hasClass('tbody_td_span_selected')){
+                        $(this).addClass('tbody_td_span_selected').removeClass('tbody_td_span_not_selected');
+                    }
+                });
                 // 确定
                 $(btnPart).on('click',function(){
                     $(area).attr('style','display:none');

@@ -1,7 +1,8 @@
 /*房屋详情页*/
 body{
-	width:90%;
-	margin: 0 auto;
+	margin: 0 5%;
+	min-width: 1059px;
+	min-height: 0;
 }
 /*房屋性质、状态*/
 .buildings_head{
@@ -25,20 +26,20 @@ body{
 	line-height: 19px;
 	display: inline-block;
 	position: absolute;
-    top: 26px;
+    top: 30px;
 }
 .buildings_state{
 	margin-left: 51px;
 }
 /*房屋详细信息*/
 .buildings_details_info,.presale_info,.land_info,.buildings_picts,.price_trend,.buildings_map{
-	margin-top: 10px;
+	margin-top: 30px;
 	border: 1px solid #e4e4e4;
 	border-top: 2px solid #169bd5;
 	width: 100%;
 }
 .buildings_details_info{
-	height: 492px;
+	height: 510px;
 }
 /*数据信息*/
 .basic_info{
@@ -85,7 +86,7 @@ body{
 .picSildeRight{cursor:pointer; position:absolute; top:32px; right:3px; z-index:9;}
 /*预售信息*/
 .presale_info{
-	height: 167px;
+	padding-bottom: 20px;
 }
 .two_title{
 	width: 72px;
@@ -96,11 +97,14 @@ body{
 	border-bottom: 2px solid #ff0000;
 	margin: 14px 0 17px 31px;
 }
+.two_title_map{
+	margin-left:0;
+}
 /*表格*/
 table.table{
 	border-right: 1px solid #e4e4e4;
     border-bottom: 1px solid #e4e4e4;
-    margin-left: 36px;
+    margin: 0 3%;
 }
 table.table td, table.table th {
     border-left: 1px solid #e4e4e4;
@@ -126,16 +130,24 @@ table.table td, table.table th {
 	height: 377px;
 	position: relative;
 }
+.buildings_pictures{
+	text-align: center;
+}
 .picture{
-	width: 282px;
+	width: 23%;
+	/*width: 282px;*/
 	height: 282px;
 	border:1px solid #d7d7d7;
 	margin-left: 7px;
 	padding:4px 3px 0 3px;
-	float: left;
+	display:inline-block;
+}
+.picture_special{
+	margin-left: 0px;
 }
 .pict_img{
-	width: 282px;
+	width: 100%;
+	/*width: 282px;*/
 	height: 187px;
 }
 .pict_text{
@@ -149,13 +161,14 @@ table.table td, table.table th {
 }
 /*展开部分*/
 .pictsHide{
-	width: 90%;
+	width: 100%;
     height: 100%;
     background: #797774;
     position: fixed;
     top: 0;
     opacity: 0.95;
     z-index: 1200;
+    left: 0%;
 }
 #picts_hide{ width:788px;  margin:0 auto;margin-top: 40px;}
 #pictsSlideWrap{ background:#F5F8FD; border:1px solid #A9BFD6; padding-bottom:30px;position: relative;}
@@ -229,17 +242,15 @@ i.delete_i{
 	/*height: 359px;*/
 }
 .chart{
-	width: 85%;
+	width: 90%;
 	margin: 0 auto;
 	height: 370px;
 }
 /*地图信息*/
 .buildings_map{
-	height: 472px
+	padding:0 0 30px 0;
 }
 .buildingsdetailsmap{
-	width: 85%;
 	margin: 0 auto;
-	height: 394px;
 	border:1px solid #797979;
 }

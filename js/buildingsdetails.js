@@ -26,9 +26,8 @@ var TLayoutControl = {
     // nMapH 地图的高度
     // nMapW地图宽度
     // nMapMinWidth 地图的最小宽度
-    // nWindowMinWidth 最大屏幕宽度
     oMap: null, oFullScreen: null, nMapH: 0
-    , nMapW: 0, aDomAry: [], nWindowMinWidth:302, nMapMinWidth:1129 
+    , nMapW: 0, aDomAry: [], nMapMinWidth:1059, nMapMaxWidth:1059 
     , fInitLayout: function () {//初始化布局
         var b = this;
         // 窗口的文档显示区的宽度 window.innerWidth
@@ -58,8 +57,13 @@ var TLayoutControl = {
         }
         this.oMap = this.aDomAry[0];
         // 地图最大宽度限制 shezhi?
-        this.oMap.style.width = (this.nMapW > this.nMapMinWidth ? this.nMapMinWidth : this.nMapW) + "px";
-        this.oMap.style.height = this.nMapH + "px";
+        if(this.nMapW < this.nMapMinWidth){
+            this.oMap.style.width = parseInt(parseInt(this.nMapMinWidth) *0.9) + "px";
+        }else{
+            this.oMap.style.width = parseInt(parseInt(this.nMapW) *0.82) + "px";
+        }
+        
+        this.oMap.style.height =this.nMapH + "px";
         this.chart();
         this.carouselSmall();
         this.carouselBig();

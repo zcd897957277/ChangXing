@@ -90,14 +90,63 @@ var TLayoutControl = {
     }
     , fMidifyLayout: function (c) {//修正布局
         var d = c.id;
-        if (d == "fullScreen") {
-            this.nMapW = this.nMapW;
-            this.nMapH = this.nMapH;
-            this.oMap.style.width = this.nMapW + "px";
-            this.oMap.style.height = this.nMapH + "px";
+        var span=$(c).find('a.screenbg>span');
+        if (d == "fullScreen" && $(span).hasClass('scrlabel')) {
             var e = fGetElement("fullScreen");
-            e.innerHTML = "<a href='javascript:void(0)' class='screenbg'><span class='scrlabel'></span>全屏</a>";
+            var docElm = document.documentElement;
+            var userAgent = navigator.userAgent; //取得浏览器的userAgent字符串
+            var isOpera = userAgent.indexOf("Opera") > -1; //判断是否Opera浏览器
+            var isIE = userAgent.indexOf("compatible") > -1 && userAgent.indexOf("MSIE") > -1 && !isOpera; //判断是否IE浏览器
+            // ie
+            if(isIE){
+                var wsh=new ActiveXObject("WScript.Shell");  
+                wsh.sendKeys("{F11}");   
+            }
+            // safari
+            if (userAgent.indexOf("Safari") > -1) {
+                alert('当前Safari浏览器版本过低，为了更好的体验请升级至最新版本！')
+            }
+            //W3C  
+            if (docElm.requestFullscreen) {  
+                docElm.requestFullscreen();  
+            }
+            //FireFox  
+            else if (docElm.mozRequestFullScreen) {  
+                docElm.mozRequestFullScreen();  
+            }
+            //Chrome等  
+            else if (docElm.webkitRequestFullScreen) {  
+                docElm.webkitRequestFullScreen();  
+            }
+            //edge
+            else if (docElm.msRequestFullscreen) {
+                docElm.msRequestFullscreen();                    
+            }
+            e.innerHTML = "<a href='javascript:void(0)' class='screenbg'><span class='scrlabel_exit'></span>退出</a>";
             map.checkResize();//通用针对两个版本 通知地图其容器大小已更改。在更改了容器对象的大小后调用此方法，以便地图能够调整自己适合于新的大小。
+        }else if(d == "fullScreen" && $(span).hasClass('scrlabel_exit')){
+            var e = fGetElement("fullScreen");
+            var userAgent = navigator.userAgent; //取得浏览器的userAgent字符串
+            var isOpera = userAgent.indexOf("Opera") > -1; //判断是否Opera浏览器
+            var isIE = userAgent.indexOf("compatible") > -1 && userAgent.indexOf("MSIE") > -1 && !isOpera; //判断是否IE浏览器
+            if(isIE){
+                var wsh=new ActiveXObject("WScript.Shell");  
+                wsh.sendKeys("{F11}");   
+            }
+            if (document.exitFullscreen) {  
+                document.exitFullscreen();  
+            }  
+            else if (document.mozCancelFullScreen) {  
+                document.mozCancelFullScreen();  
+            }  
+            else if (document.webkitCancelFullScreen) {  
+                document.webkitCancelFullScreen();  
+            }
+            else if (document.msExitFullscreen) {
+                  document.msExitFullscreen();
+            }
+            e.innerHTML = "<a href='javascript:void(0)' class='screenbg'><span class='scrlabel'></span>全屏</a>";
+            map.checkResize();
         }
     }
     , fWinResizeHandle: function () {//调整可视框大小

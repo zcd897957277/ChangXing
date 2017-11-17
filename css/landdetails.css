@@ -1,6 +1,8 @@
 /*土地详情页*/
 body{
-	padding:0 120px;
+	padding:0 6%;
+	min-height: 0; 
+	min-width: 0;
 }
 /*地块性质、状态*/
 .land_head{
@@ -23,7 +25,7 @@ body{
 	line-height: 19px;
 	display: inline-block;
 	position: absolute;
-    top: 26px;
+    top: 32px;
 }
 .land_state{
 	margin-left: 51px;
@@ -31,7 +33,7 @@ body{
 /*地块编号、位置*/
 .land_middle{
 	margin-top: 19px;
-	padding:0 27px;
+	padding: 0 2%;
 }
 .land_middle_li{
 	margin-top: 14px;
@@ -42,11 +44,9 @@ body{
 }
 /*土地基本信息*/
 .land_basic,.land_business{
-	width: 1098px;
-	border:1px solid #e4e4e4;
-	border-top: 2px solid #ff0000;
-	padding-top: 14px;
-	padding-left: 59px;
+    border: 1px solid #e4e4e4;
+    border-top: 2px solid #ff0000;
+    padding: 14px 5% 0 5%;
 }
 .land_basic{
 	height: 327px;
@@ -71,7 +71,7 @@ body{
 /*土地交易信息*/
 .land_business{
 	height: 280px;
-	margin-top: 12px;
+	margin-top: 30px;
 }
 .land_business_title{
 }

@@ -58,6 +58,7 @@ var SearchItem = {
         this.pressureClick();
         this.transactionClick();
         this.switchLayer();
+        this.filp();
     },
     searchLiClick:function(){//搜索条件中li的选择
     	var Thislis=this.lis;
@@ -544,6 +545,35 @@ var SearchItem = {
                     }
                 });
             }(i));
+        }
+    },
+    filp:function(){//结果显示去翻页功能
+        var result=this.rst;
+        var results=$(result).children('ul.result_show');
+        var pages=$(result).children('div.pages').find('ul>li');
+        for(var i=0;i<pages.length;i++){
+            !(function(i){
+                $($(pages)[i]).on('click',function(){
+                    var str='';
+                    str+="<li class='result_item' onclick='window.location.href = './buildingsdetails.html';'>"+
+                        "<div class='result_img'><img class='resultImg' src='images/房屋.jpg' alt=''></div>"+
+                        "<div class='result_content'>"+
+                            "<div class='result_content_col1'><span class='result_content_col_icon col_icon1'></span>绿城玉兰花园</div>"+
+                            "<div class='result_content_col2'>"+
+                                "[<span class='col2_span'>城区</span>] 地址：<p class='col2_p'>长兴区.......</p>"+
+                            "</div>"+
+                            "<div class='result_content_col3'><span class='col3_span'>16000</span>元/m²</div>"+
+                        "</div>"+
+                        "<div class='clear'></div>"+
+                    "</li>";
+                    var num=parseInt(Math.random()*7);
+                    var strs='';
+                    for(var j=0;j<num;j++){
+                        strs+=str;
+                    }
+                    $(results).html(strs);
+                });
+            }(i))
         }
     }
 }

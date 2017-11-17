@@ -5,14 +5,21 @@ $('#tLi').on('click',function(){
 	var ul=$(this).children('ul');
 	if($(ul).hasClass('toolshow')){
 		$(ul).css('display','none').removeClass('toolshow');
+		if(!$(ul).prev('span#toolCur').hasClass('rang_more')){
+			$(ul).prev('span#toolCur').removeClass('rang_more_show').addClass('rang_more');
+		}
 	}else{
 		$(ul).css('display','block').addClass('toolshow');
+		if($(ul).prev('span#toolCur').hasClass('rang_more')){
+			$(ul).prev('span#toolCur').removeClass('rang_more').addClass('rang_more_show');
+		}
 	}
 });
 
 // 工具项各功能
 // 测量工具
 function toolbarmeasure(){
+	map.disableDoubleClickZoom();
 	if(mark) mark.close();
 	if(polyline) polyline.close();
 	if(polygon) polygon.close();
@@ -39,11 +46,13 @@ function toolbarmeasure(){
 				$($('.tdt-overlay-pane>svg>g>path')[i]).attr('measposition',str);
 			}
 		}
+		map.enableDoubleClickZoom();
 	})
 } 
 
 // 测面工具
 function toolbarmeasuremask(){
+	map.disableDoubleClickZoom();
 	if(mark) mark.close();
 	if(polyline) polyline.close();
 	if(polygon) polygon.close();
@@ -69,6 +78,7 @@ function toolbarmeasuremask(){
 				$($('.tdt-overlay-pane>svg>g>path')[i]).attr('measurposition',str);
 			}
 		}
+		map.enableDoubleClickZoom();
 	})
 } 
 
@@ -188,6 +198,7 @@ function markTextSpot(lng,lat,_thisX,_thisY,createLabel){
 
 // 标线工具
 function toolbarmarkline(){
+	map.disableDoubleClickZoom();
 	if(measure) measure.close();
 	if(measuresurface) measuresurface.close();
 	if(mark) mark.close();
@@ -275,6 +286,7 @@ function toolbarmarkline(){
 				}
         	})
 	    }
+	    map.enableDoubleClickZoom();
     });
 }
 
@@ -329,6 +341,7 @@ function markTextPolyline(lng,lat,dist,delet_num_polyline){
 
 // 标面工具
 function toolbarmarkmask(){
+	map.disableDoubleClickZoom();
 	if(measure) measure.close();
 	if(measuresurface) measuresurface.close();
 	if(mark) mark.close();
@@ -419,6 +432,8 @@ function toolbarmarkmask(){
 	    		markTextPolygon(lng,lat,area,string);
         	})
 	    }
+
+	    map.enableDoubleClickZoom();
     });
 } 
 

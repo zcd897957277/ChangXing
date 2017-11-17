@@ -28,7 +28,7 @@ var TLayoutControl = {
     // nMapMinWidth 地图的最小宽度
     // nWindowMinWidth 最大屏幕宽度
     oMap: null, oFullScreen: null, nMapH: 0
-    , nMapW: 0, aDomAry: [], nWindowMinWidth:302, nMapMinWidth:1129 
+    , nMapW: 0, aDomAry: []
     , fInitLayout: function () {//初始化布局
         var b = this;
         // 窗口的文档显示区的宽度 window.innerWidth
@@ -57,9 +57,9 @@ var TLayoutControl = {
             this.aDomAry = fGetElement("landdetailsmap");
         }
         this.oMap = this.aDomAry;
-        // 地图最大宽度限制 shezhi?
-        this.oMap.style.width = (this.nMapW > this.nMapMinWidth ? this.nMapMinWidth : this.nMapW) + "px";
-        this.oMap.style.height = this.nMapH + "px";
+        // 地图宽度设置
+        this.oMap.style.width = parseInt(parseInt(this.nMapW) * 0.88 * 0.96) + "px";
+        this.oMap.style.height = parseInt(parseInt(this.nMapH) * 0.88 * 0.96) + "px";
     },
     fWinResizeHandle: function () {//调整可视框大小
         this.fInitLayout();//初始化

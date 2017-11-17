@@ -97,13 +97,18 @@ display: none;
     float: left;
     display: block;
 }
-.rang_more {
-    background: url(../images/mainImage.png) no-repeat -20px -61px;
-    margin: 6px 0px 0px 5px;
+.rang_more,.rang_more_show{
+	margin: 6px 0px 0px 5px;
     width: 7px;
     height: 5px;
     float: left;
     display: block;
+}
+.rang_more {
+    background: url(../images/mainImage.png) no-repeat -20px -61px;
+}
+.rang_more_show {
+    background: url(../images/mainImage.png) no-repeat -20px -54px
 }
 .tool ul {
     background: rgb(255, 255, 255);
@@ -126,8 +131,8 @@ display: none;
     margin-top: 6px;
 }
 .tool ul a {
-    margin: 0px 3px 0px 5px;
-    height: 18px;
+    margin: 3px 3px 0px 5px;
+    height: 20px;
     color: rgb(39, 116, 201);
     padding-bottom: 5px;
     padding-left: 12px;
@@ -177,6 +182,14 @@ display: none;
     display: block;
 }
 .scrlabel {
+    background: url(../images/indexImage.png) no-repeat -129px -132px;
+    width: 14px;
+    height: 14px;
+    margin-right: 7px;
+    float: left;
+    margin-top: 1px;
+}
+.scrlabel_exit {
     background: url(../images/indexImage.png) no-repeat -129px -132px;
     width: 14px;
     height: 14px;
@@ -415,7 +428,7 @@ background: url("../images/indexImage.png") no-repeat -280px -133px; width: 14px
 .population_condition_icon{
 	float: left;
     margin-right: 9px;
-    margin-top: -3px;
+    margin-top: -1px;
 	display: inline-block;
 	width:13px;
 	height:16px;
@@ -749,7 +762,7 @@ background: url("../images/indexImage.png") no-repeat -280px -133px; width: 14px
 	text-align: center;
 	line-height: 40px;
 	color: #fff;
-	margin-top: 42px;
+	margin-top: 32px;
 	border-radius: 10px;
 	margin-left: 231px;
 	cursor: pointer;
@@ -874,10 +887,10 @@ table.table_show td,table.table_show th{
 /*模式设置*/
 .set_mode{
 	position: fixed;
-	top: 10%;
+	top: 20%;
 	z-index: 1400;
-	left: 35%;
-	width: 306px;
+	left: 45%;
+	width: 254px;
 	height: 170px;
 	border: 1px solid #000;/*#f2f2f2*/
 	padding:15px 35px 27px 15px;
@@ -927,7 +940,7 @@ table.table_show td,table.table_show th{
 	border-radius: 5px;
 	cursor: pointer;
 	margin-top: 30px;
-	margin-left: 120px;
+	margin-left: 105px;
 }
 /*压力预警*/
 .pressure,.transaction{
