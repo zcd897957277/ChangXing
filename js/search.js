@@ -510,39 +510,39 @@ var SearchItem = {
                         }
                     }
                     // 三维
-                    if($(this).hasClass('sw_type')){
-                        if(!$(layerPop).attr('style')){
-                            $(layerPop).attr('style','display:none');
-                        }
-                        map.setMaxZoom(18);
-                        // 删除添加的图层
-                        var addLayers=$("#map").find('div.tdt-map-pane>div.tdt-tile-pane>div');
-                        for(var j=0;j<addLayers.length;j++){
-                            if($($(addLayers)[j])){
-                                $($(addLayers)[j]).remove();
-                            }
-                        }
-                        var imageURL = "https://t4.tianditu.com/DataServer?T=img_w&x={x}&y={y}&l={z}";
-                        var maplay_base = new T.TileLayer(imageURL, {minZoom: zoomMin, maxZoom: zoomMax});
-                        //将图层增加到地图上
-                        map.addLayer(maplay_base);
-                        var imageURL = "http://t0.tianditu.cn/cia_w/wmts?" +
-                            "SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=cia&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles" +
-                            "&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}";
-                        //创建自定义图层对象
-                        var maplay_text = new T.TileLayer(imageURL, {minZoom: zoomMin, maxZoom: zoomMax});
-                        //将图层增加到地图上
-                        map.addLayer(maplay_text);
+                    // if($(this).hasClass('sw_type')){
+                    //     if(!$(layerPop).attr('style')){
+                    //         $(layerPop).attr('style','display:none');
+                    //     }
+                    //     map.setMaxZoom(18);
+                    //     // 删除添加的图层
+                    //     var addLayers=$("#map").find('div.tdt-map-pane>div.tdt-tile-pane>div');
+                    //     for(var j=0;j<addLayers.length;j++){
+                    //         if($($(addLayers)[j])){
+                    //             $($(addLayers)[j]).remove();
+                    //         }
+                    //     }
+                    //     var imageURL = "https://t4.tianditu.com/DataServer?T=img_w&x={x}&y={y}&l={z}";
+                    //     var maplay_base = new T.TileLayer(imageURL, {minZoom: zoomMin, maxZoom: zoomMax});
+                    //     //将图层增加到地图上
+                    //     map.addLayer(maplay_base);
+                    //     var imageURL = "http://t0.tianditu.cn/cia_w/wmts?" +
+                    //         "SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=cia&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles" +
+                    //         "&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}";
+                    //     //创建自定义图层对象
+                    //     var maplay_text = new T.TileLayer(imageURL, {minZoom: zoomMin, maxZoom: zoomMax});
+                    //     //将图层增加到地图上
+                    //     map.addLayer(maplay_text);
 
-                        var imageURL = "https://t4.tianditu.com/DataServer?T=elv_c&x={x}&y={y}&l={z}";
-                        maplay_3D = new T.TileLayer(imageURL, {minZoom: zoomMin, maxZoom: zoomMax});
-                        //将图层增加到地图上
-                        map.addLayer(maplay_3D);
+                    //     var imageURL = "https://t4.tianditu.com/DataServer?T=elv_c&x={x}&y={y}&l={z}";
+                    //     maplay_3D = new T.TileLayer(imageURL, {minZoom: zoomMin, maxZoom: zoomMax});
+                    //     //将图层增加到地图上
+                    //     map.addLayer(maplay_3D);
 
-                        if($(layerEarth).attr('style')){
-                            $(layerEarth).attr('style','');
-                        }
-                    }
+                    //     if($(layerEarth).attr('style')){
+                    //         $(layerEarth).attr('style','');
+                    //     }
+                    // }
                 });
             }(i));
         }
